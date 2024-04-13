@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 import dj_database_url  
 
@@ -31,7 +32,7 @@ SECRET_KEY = 'django-insecure-2g%2p@75jfmp@chox2l+rjcok&$f915hxyj0!i-w=b1h8z*)-&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['estore-backend.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
 
 
 # Application definition
@@ -86,10 +87,15 @@ WSGI_APPLICATION = 'estore_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'PYuIazsULNAcBOLfIyErwjITjiSEUnKL',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '13303',
     }
 }
+
 
 
 # Password validation
@@ -132,3 +138,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
